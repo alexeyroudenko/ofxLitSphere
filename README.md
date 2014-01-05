@@ -1,3 +1,5 @@
+ofxLitSphere
+=============================
 This port of vvvv contribution can help create nice materiala on OpenFrameworks.
 http://vvvv.org/contribution/matcap™-technique-from-zbrush
 
