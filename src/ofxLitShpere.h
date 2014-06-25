@@ -23,6 +23,18 @@ public:
         loadPrevious();
     }
     
+    void loadAt(int number) {
+        string directory = "MatCapZBrush/Lib/";
+        dir.listDir(directory);
+
+        current = number;
+        if (dir.size() <= current) current = 0;
+        
+        string fileName = dir.getPath(current);
+        ofLogVerbose("ofxLitSphere", "fileName " + fileName);
+        texture.loadImage(fileName);
+    }
+    
     void loadNext() {
         string directory = "MatCapZBrush/Lib/";
         dir.listDir(directory);
