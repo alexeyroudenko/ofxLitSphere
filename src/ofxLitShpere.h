@@ -10,13 +10,15 @@ public:
     
     ofImage texture;
     ofDirectory dir;
-    int current = 0;
+    int current;
     
     //--------------------------------------------------------------
     void setup(){
         ofEnableNormalizedTexCoords();
         ofDisableNormalizedTexCoords();
         ofEnableAlphaBlending();
+
+		current = 0;
             
         shader.load("shaders/litsphere/vert.glsl", "shaders/litsphere/frag.glsl");
         loadNext();
