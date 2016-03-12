@@ -2,7 +2,6 @@
 
 #include "ofMain.h"
 #include "ofxLitSphere.h"
-#include "DisplacementSphereMesh.h"
 
 class testApp : public ofBaseApp{
     
@@ -22,8 +21,4 @@ public:
     void gotMessage(ofMessage msg);
     
     ofxLitSphere litSphere;
-    ofxLitSphere litSphere02;
-    DisplacementSphereMesh displacement;
-    ofMaterial material;
-    ofLight light;
 };

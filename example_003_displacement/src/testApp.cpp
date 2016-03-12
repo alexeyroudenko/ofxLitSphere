@@ -15,6 +15,17 @@ void testApp::setup(){
     ofSetConeResolution(40, 40, 40);
     
     displacement.setup();
+    
+    light.setAmbientColor(ofColor(200));
+    light.setDiffuseColor(ofColor(200));
+    light.setSpecularColor(ofColor(200));
+    ofSetSmoothLighting(false);
+    
+    material.setAmbientColor(ofColor(150));
+    material.setDiffuseColor(ofColor(150));
+    material.setSpecularColor(ofColor(150));
+    material.setEmissiveColor(ofFloatColor(10.0));
+    material.setShininess(0.8);
 }
 
 //--------------------------------------------------------------
@@ -29,17 +40,23 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    ofClear(0, 0, 0, 255);
+    ofEnableAlphaBlending();
+    ofEnableDepthTest();
     
-    ofBackgroundGradient(ofColor(180), ofColor(70), OF_GRADIENT_CIRCULAR);
+    ofClear(128);
+    ofSetColor(255, 255, 255, 255);
+    
     
     ofPushMatrix();
     ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2);
     
-    // hack
-    material.begin();
-    material.end();
     
+    // hack
+    //material.begin();
+    //material.end();
+    
+    
+    light.enable();
     
     // first
     litSphere.begin();
@@ -52,9 +69,13 @@ void testApp::draw(){
         ofDrawSphere(0, 0, 180);
         ofPopMatrix();
     litSphere02.end();
-
+    
+    light.disable();
+    
+    ofDisableDepthTest();
+    ofEnableAlphaBlending();
     ofPopMatrix();
-    ofDrawBitmapStringHighlight("click to change sourse", ofPoint(20, 20));
+    ofDrawBitmapString("click to change sourse", ofPoint(20, 20));
 }
 
 //--------------------------------------------------------------
@@ -63,7 +84,7 @@ void testApp::keyPressed(int key){
     if (key == 'f') ofToggleFullscreen();
     if (key == '.') litSphere.loadNext();
     if (key == ',') litSphere02.loadNext();
-    if (key == ' ') ofLogVerbose(ofToString(litSphere.current) + " " + ofToString(litSphere02.current) + " " + ofToString(ofGetMouseY()));
+    if (key == ' ') ofLogVerbose(ofToString(litSphere.getCurrent()) + " " + ofToString(litSphere02.getCurrent()) + " " + ofToString(ofGetMouseY()));
         
 }
 
@@ -88,21 +109,13 @@ void testApp::mousePressed(int x, int y, int button){
 }
 
 //--------------------------------------------------------------
-void testApp::mouseReleased(int x, int y, int button){
-
-}
+void testApp::mouseReleased(int x, int y, int button){}
 
 //--------------------------------------------------------------
-void testApp::windowResized(int w, int h){
-
-}
+void testApp::windowResized(int w, int h){}
 
 //--------------------------------------------------------------
-void testApp::gotMessage(ofMessage msg){
-
-}
+void testApp::gotMessage(ofMessage msg){}
 
 //--------------------------------------------------------------
-void testApp::dragEvent(ofDragInfo dragInfo){ 
-
-}
+void testApp::dragEvent(ofDragInfo dragInfo){}

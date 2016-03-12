@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxLitShpere.h"
+#include "ofxLitSphere.h"
 
 class testApp : public ofBaseApp{
     
