@@ -9,6 +9,7 @@ void ofApp::setup(){
     ofDisableArbTex();
     ofEnableDepthTest();
     ofSetVerticalSync(true);
+    
     litSphere.setup();
     litSphere.loadAt(2);
 
@@ -22,7 +23,7 @@ void ofApp::setup(){
     light.setAmbientColor(ofColor(200));
     light.setDiffuseColor(ofColor(200));
     light.setSpecularColor(ofColor(200));
-    ofSetSmoothLighting(false);
+    ofSetSmoothLighting(true);
     
     material.setAmbientColor(ofColor(150));
     material.setDiffuseColor(ofColor(150));
@@ -38,20 +39,24 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+
+    ofSetColor(255);
     
-    ofEnableAlphaBlending();
-    ofEnableDepthTest();
-    
-    ofClear(128);
-    ofSetColor(255, 255, 255, 255);
-    
+    ofClear(0);
+    ofPushMatrix();
+    ofScale(2, 2);
+    ofBackgroundGradient(ofColor(180), ofColor(70), OF_GRADIENT_CIRCULAR);
+    ofPopMatrix();
     
     ofPushMatrix();
     ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2);
-    
+
+    ofEnableAlphaBlending();
+    ofEnableDepthTest();
+    ofDisableNormalizedTexCoords();
     
     light.enable();
-    
+
     // first
     litSphere.begin();
         displacement.draw();
@@ -63,8 +68,8 @@ void ofApp::draw(){
         ofDrawSphere(0, 0, 180);
         ofPopMatrix();
     litSphere02.end();
-    
-    light.disable();
+//
+//    light.disable();
     
     ofDisableDepthTest();
     ofEnableAlphaBlending();

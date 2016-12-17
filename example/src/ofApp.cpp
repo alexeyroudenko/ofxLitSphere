@@ -18,6 +18,11 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    ofClear(0);
+    ofPushMatrix();
+    ofScale(2, 2);
+    ofBackgroundGradient(ofColor(180), ofColor(70), OF_GRADIENT_CIRCULAR);
+    ofPopMatrix();
     
     litSphere.begin();
     ofTranslate(ofGetWidth() / 2, ofGetHeight() / 2);
