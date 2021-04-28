@@ -71,5 +71,9 @@ void DisplacementSphereMesh::setNormals( ofMesh &mesh ){
         norm[i].normalize();
     }
     mesh.clearNormals();
-    mesh.addNormals( norm );
+    
+    for (int i=0; i<nV; i++) {
+        norm[i].normalize();
+        mesh.addNormal(norm[i]);
+    }
 }

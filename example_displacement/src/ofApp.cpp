@@ -65,7 +65,7 @@ void ofApp::draw(){
     // second
     litSphere02.begin();
         glPushMatrix();
-        ofDrawSphere(0, 0, 180);
+        ofDrawSphere(0, 0, 150);
         ofPopMatrix();
     litSphere02.end();
 //
